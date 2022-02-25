@@ -1,0 +1,10 @@
+apiVersion: dapr.io/v1alpha1
+kind: Subscription
+metadata:
+  name: message-event-integration
+spec:
+  topic: messageEvent
+  route: /message-operations
+  pubsubname: message-event-integration
+scopes:
+  - event-service
