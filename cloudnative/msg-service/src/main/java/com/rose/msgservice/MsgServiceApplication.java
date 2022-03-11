@@ -13,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.protobuf.ProtobufJsonFormatHttpMessageConverter;
 
 import java.util.UUID;
 
@@ -26,7 +27,7 @@ public class MsgServiceApplication {
         SpringApplication.run(MsgServiceApplication.class, args);
     }
 
-    //@Bean
+    @Bean
     CommandLineRunner start(MessageService messageService) {
         return args -> {
             messageService.save(new MessageDTO(UUID.randomUUID().toString(), "Message body 1"));
@@ -44,6 +45,11 @@ public class MsgServiceApplication {
                 .logger(new Slf4jLogger(EventClient.class))
                 .logLevel(Logger.Level.FULL)
                 .target(EventClient.class, "http://localhost:4001/v1.0/publish/"+ PUBSUB_NAME +"/"+TOPIC_NAME);
+    }
+
+    @Bean
+    public ProtobufJsonFormatHttpMessageConverter protobufHttpMessageConverter() {
+        return new ProtobufJsonFormatHttpMessageConverter();
     }
 
 }
