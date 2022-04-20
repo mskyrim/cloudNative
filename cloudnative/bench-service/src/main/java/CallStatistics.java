@@ -22,4 +22,22 @@ public class CallStatistics {
             e.printStackTrace();
         }
     }
+
+    static void printStatistics(LongSummaryStatistics requestSummaryStatistics, final String title) {
+        // Use various methods to obtain the data
+        System.out.println("=================================");
+        System.out.println("============" + title + "================");
+        System.out.println("=================================");
+        System.out.println("The count of values : "
+                + requestSummaryStatistics.getCount());
+        System.out.println("The average of values : "
+                + requestSummaryStatistics.getAverage());
+        System.out.println("The sum of values : "
+                + requestSummaryStatistics.getSum());
+        System.out.println("The maximum of values : "
+                + requestSummaryStatistics.getMax());
+        System.out.println("The minimum of values : "
+                + requestSummaryStatistics.getMin());
+        System.out.println("=================================");
+    }
 }
