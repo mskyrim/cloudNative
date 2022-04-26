@@ -35,7 +35,7 @@ public class MessageServiceImpl implements MessageService {
         Message message = messageMapper.messageDtoToMessage(messageDTO);
         message.setId(UUID.randomUUID().toString());
         Message savedMessage = messageRepository.save(message);
-        //publishMsgCreationEvent(savedMessage.getId());
+        publishMsgCreationEvent(savedMessage.getId());
         return messageMapper.messageToMessageDto(savedMessage);
     }
 

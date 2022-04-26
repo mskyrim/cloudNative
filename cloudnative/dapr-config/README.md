@@ -18,4 +18,11 @@ sudo dapr run --app-id event-service --dapr-http-port 4002 --app-port 3002 --con
 sudo dapr dashboard
 
 ### Start zepkin
-sudo docker-compose -f docker-compose-mem.yml up zipkin  
+sudo docker-compose -f docker-compose-mem.yml up zipkin
+
+### Acess H2 console for each service
+http://localhost:3001/h2-console/
+
+### Run kafka
+~/kafka_2.13-3.1.0/bin/zookeeper-server-start.sh ~/kafka_2.13-3.1.0/config/zookeeper.properties   
+~/kafka_2.13-3.1.0/bin/kafka-server-start.sh ~/kafka_2.13-3.1.0/config/server.properties  

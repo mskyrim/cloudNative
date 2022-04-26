@@ -3,8 +3,6 @@ package com.rose.msgservice.web;
 import com.rose.msgservice.dto.MessageDTO;
 import com.rose.msgservice.service.MessageService;
 import com.rose.msgservice.service.MessageServiceException;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

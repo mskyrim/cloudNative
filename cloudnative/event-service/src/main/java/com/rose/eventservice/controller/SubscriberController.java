@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rose.eventservice.dto.Event;
 import com.rose.eventservice.service.EventService;
-import io.dapr.Topic;
 import io.dapr.client.domain.CloudEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +23,7 @@ public class SubscriberController {
         this.eventService = eventService;
     }
 
-    @Topic(name = "messageEvent", pubsubName = "message-event-integration")
+    //@Topic(name = "messageEvent", pubsubName = "kafka-message-event-integration")
     @PostMapping(path = "/message-operations")
     public void consumeMessageEvents(@RequestBody(required = false) CloudEvent event){
         try {
