@@ -20,14 +20,15 @@ import java.util.UUID;
 @SpringBootApplication
 public class MsgServiceApplication {
 
-    public static final String PUBSUB_NAME = "message-event-integration";
+    public static final String REDIS_PUBSUB_NAME = "redis-message-event-integration";
+    public static final String KAFKA_PUBSUB_NAME = "kafka-message-event-integration";
     public static final String TOPIC_NAME = "messageEvent";
 
     public static void main(String[] args) {
         SpringApplication.run(MsgServiceApplication.class, args);
     }
 
-    @Bean
+    //@Bean
     CommandLineRunner start(MessageService messageService) {
         return args -> {
             messageService.save(new MessageDTO(UUID.randomUUID().toString(), "Message body 1"));
@@ -44,7 +45,7 @@ public class MsgServiceApplication {
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger(EventClient.class))
                 .logLevel(Logger.Level.FULL)
-                .target(EventClient.class, "http://localhost:4001/v1.0/publish/"+ PUBSUB_NAME +"/"+TOPIC_NAME);
+                .target(EventClient.class, "http://localhost:4001/v1.0/publish/"+ KAFKA_PUBSUB_NAME +"/"+TOPIC_NAME);
     }
 
     @Bean
